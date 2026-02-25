@@ -12,11 +12,23 @@
 
   <style>
     :root{
-      --bg:#0e0f12;
-      --text:#f2f2f2;
-      --muted:#b7b7b7;
-      --line:#2a2a2a;
-      --max:760px;
+      /* matte, eye-friendly palette (no gradients) */
+      --bg:   #0f1114;
+      --text: #f2f2f2;
+      --muted:#b8bec8;
+      --line: #2a2f38;
+
+      /* section highlight blocks (matte) */
+      --s1:#11151b;
+      --s2:#121a17; /* muted green-gray */
+      --s3:#14141c; /* muted violet-gray */
+      --s4:#161a14; /* muted olive-gray */
+      --s5:#121318; /* near base */
+
+      --pink:#ff4fd8; /* reserved for later DE badge */
+      --max: 880px;
+      --radius: 18px;
+      --focus: 0 0 0 3px rgba(184,190,200,.25);
     }
 
     *{box-sizing:border-box}
@@ -27,165 +39,326 @@
       font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:var(--bg);
       color:var(--text);
-      line-height:1.65;
+      line-height:1.7;
     }
 
-    main{
-      max-width:var(--max);
+    a{color:inherit; text-decoration:none}
+    a:focus, button:focus{outline:none; box-shadow:var(--focus); border-radius:12px}
+
+    .container{
+      width:min(var(--max), calc(100% - 40px));
       margin:0 auto;
-      padding:96px 20px 120px;
     }
 
-    h1{
-      font-size:44px;
-      line-height:1.1;
+    /* Header (sticky) + menu open/close (similar pattern) */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(15,17,20,.92);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 0;
+      gap:12px;
+    }
+
+    .brand{
+      font-size:14px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .navDesktop{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .navDesktop a{
+      font-size:14px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:12px;
+    }
+    .navDesktop a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.04);
+    }
+
+    .menuBtn{
+      display:none;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
       font-weight:500;
-      margin:24px 0 32px;
+    }
+    .menuBtn:hover{background:rgba(255,255,255,.04)}
+
+    /* Mobile menu overlay */
+    .overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(15,17,20,.94);
+      backdrop-filter: blur(10px);
+      display:none;
+      z-index:100;
+    }
+    .overlay[aria-hidden="false"]{display:block}
+
+    .overlayInner{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+      padding:22px 0;
+    }
+    .overlayTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--line);
+      padding-bottom:14px;
+    }
+    .closeBtn{
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:500;
+    }
+    .closeBtn:hover{background:rgba(255,255,255,.04)}
+    .menuList{
+      list-style:none;
+      padding:18px 0 0;
+      margin:0;
+      display:grid;
+      gap:10px;
+    }
+    .menuList a{
+      display:block;
+      padding:14px 12px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.02);
+      font-size:16px;
+      color:var(--text);
+    }
+    .menuList a:hover{background:rgba(255,255,255,.05)}
+
+    /* Main */
+    main{padding: 34px 0 120px}
+
+    .hero{
+      padding: 56px 0 24px;
+    }
+    .kicker{
+      font-size:13px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 18px;
+    }
+    h1{
+      font-size: clamp(34px, 4.2vw, 58px);
+      line-height:1.08;
       letter-spacing:-0.02em;
+      font-weight:500;
+      margin:0 0 18px;
     }
 
     h2{
       font-size:22px;
-      font-weight:500;
-      margin:96px 0 24px;
       letter-spacing:-0.01em;
+      font-weight:500;
+      margin:0 0 14px;
     }
 
     p{
-      font-size:17px;
+      margin:0 0 18px;
       color:var(--muted);
-      margin:0 0 24px;
+      font-size:17px;
     }
 
+    .lead{
+      color:var(--text);
+      opacity:.92;
+      margin-bottom:26px;
+    }
+
+    /* Section highlight blocks */
+    section.block{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 34px 22px;
+      margin: 26px 0;
+    }
+
+    .b1{background:var(--s1)}
+    .b2{background:var(--s2)}
+    .b3{background:var(--s3)}
+    .b4{background:var(--s4)}
+    .b5{background:var(--s5)}
+
     ul{
-      margin:24px 0 32px;
+      margin: 14px 0 18px;
       padding-left:18px;
       color:var(--muted);
     }
+    li{margin:10px 0}
 
-    li{
-      margin-bottom:12px;
-    }
-
-    .kicker{
-      font-size:13px;
-      letter-spacing:0.18em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-
-    .divider{
-      height:1px;
-      background:var(--line);
-      margin:96px 0;
-    }
-
-    a{
+    .mail{
       color:var(--text);
-      text-decoration:none;
       border-bottom:1px solid var(--line);
+      text-underline-offset:4px;
     }
-
-    a:hover{
-      border-bottom-color:var(--text);
-    }
+    .mail:hover{border-bottom-color:var(--text)}
 
     footer{
-      margin-top:120px;
-      font-size:14px;
-      color:var(--muted);
+      margin-top: 96px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 860px){
+      .navDesktop{display:none}
+      .menuBtn{display:inline-flex}
+      .hero{padding-top:42px}
+    }
+
+    @media (max-width: 520px){
+      section.block{padding: 28px 16px}
     }
   </style>
 </head>
 
 <body>
-  <main>
+  <header>
+    <div class="container topbar">
+      <a class="brand" href="#top">Fahima Makanga</a>
 
-    <div class="kicker">Growth Directress</div>
+      <nav class="navDesktop" aria-label="Primary navigation">
+        <a href="#work">What I actually do</a>
+        <a href="#why">Why it matters</a>
+        <a href="#leaders">How I work with leaders</a>
+        <a href="#contact">Contact me</a>
+      </nav>
 
-    <h1>Growth, when clarity matters</h1>
+      <button class="menuBtn" id="openMenu" type="button" aria-haspopup="dialog" aria-controls="menuOverlay">
+        <span aria-hidden="true">☰</span><span>Menu</span>
+      </button>
+    </div>
+  </header>
 
-    <p>I work with companies that grow under pressure.</p>
+  <div class="overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="overlayInner">
+      <div class="overlayTop">
+        <div class="brand">Menu</div>
+        <button class="closeBtn" id="closeMenu" type="button">Close</button>
+      </div>
 
-    <p>
-      My background sits at the intersection of technology, communication and public exposure.
-      I've worked in highly regulated environments, international tech companies,
-      media organizations, and crisis-adjacent contexts.
-      What connects all of it is this: growth fails when understanding breaks down.
-      My role as a Growth Directress is to prevent that.
-      I focus on keeping organizations steerable as complexity increases.
-      That means translating between (technical) teams, leadership and external Stakeholders,
-      aligning decisions before misalignment becomes structural,
-      and making sure growth doesn't outpace responsibility.
-      I don't approach growth as a visibility problem.
-      I approach it as a coordination problem.
-    </p>
+      <ul class="menuList">
+        <li><a href="#top">Top</a></li>
+        <li><a href="#work">What I actually do</a></li>
+        <li><a href="#why">Why it matters</a></li>
+        <li><a href="#leaders">How I work with leaders</a></li>
+        <li><a href="#contact">Contact me</a></li>
+      </ul>
+    </div>
+  </div>
 
-    <h2>What I actually do</h2>
+  <main class="container" id="top">
+    <div class="hero">
+      <div class="kicker">GROWTH DIRECTRESS</div>
+      <h1>Growth, when clarity matters</h1>
+      <p class="lead">I work with companies that grow under pressure.</p>
 
-    <p>I help leadership teams stay in control while scaling. That includes:</p>
+      <p>
+        My background sits at the intersection of technology, communication and public exposure. I've worked in highly regulated environments, international tech companies, media organizations, and crisis-adjacent contexts. What connects all of it is this: growth fails when understanding breaks down. My role as a Growth Directress is to prevent that. I focus on keeping organizations steerable as complexity increases. That means translating between (technical) teams, leadership and external Stakeholders, aligning decisions before misalignment becomes structural, and making sure growth doesn't outpace responsibility. I don't approach growth as a visibility problem. I approach it as a coordination problem.
+      </p>
+    </div>
 
-    <ul>
-      <li>structuring communication across product, leadership, and public interfaces</li>
-      <li>anticipating where misunderstanding turn into risk</li>
-      <li>building narratives that hold internally and externally</li>
-      <li>supporting decisions in moments where speed and responsibility collide</li>
-    </ul>
+    <section class="block b2" id="work">
+      <h2>What I actually do</h2>
+      <p>I help leadership teams stay in control while scaling. That includes:</p>
 
-    <p>
-      I'm used to operating where stakes are real:
-      public scrunity, regulatory attention, technological complexity,
-      and reputational risk.
-      I don't optimize for attention.
-      I optimize for coherence.
-    </p>
+      <ul>
+        <li>structuring communication across product, leadership, and public interfaces</li>
+        <li>anticipating where misunderstanding turn into risk</li>
+        <li>building narratives that hold internally and externally</li>
+        <li>supporting decisions in moments where speed and responsibility collide</li>
+      </ul>
 
-    <h2>Why it matters</h2>
+      <p>I'm used to operating where stakes are real: public scrunity, regulatory attention, technological complexity, and reputational risk. I don't optimize for attention. I optimize for coherence.</p>
+    </section>
 
-    <p>
-      Scale amplifies everything.
-      If assumptions are unclear, they spread.
-      If communication is fragmented, control erodes.
-      If responsibility isn't explicit, trust breaks first.
-      Companies don't lose momentum because they lack ambition.
-      They lose it because clarity dissapears faster than they notice.
-      My work is about slowing that erosion down before it becomes visible.
-    </p>
+    <section class="block b3" id="why">
+      <h2>Why it matters</h2>
+      <p>Scale amplifies everything If assumptions are unclear, they spread. If communication is fragmented, control erodes. If responsibility isn't explicit, trust breaks first. Companies don't lose momentum because they lack ambition. They lose it because clarity dissapears faster than they notice. My work is about slowing that erosion down before it becomes visible.</p>
+    </section>
 
-    <h2>How I work with leaders</h2>
+    <section class="block b4" id="leaders">
+      <h2>How I work with leaders</h2>
+      <p>I work best with leaders who: carry responsibility for complex systems understand that growth is not neutral value clear judgement over constant acceleration If you're looking for someone to push numbers at all costs, I'm not the right fit. If you're looking for someone who helps you grow without loosing oversight, context, and trust, we should talk.</p>
+    </section>
 
-    <p>
-      I work best with leaders who:
-      carry responsibility for complex systems
-      understand that growth is not neutral
-      value clear judgement over constant acceleration
-    </p>
-
-    <p>
-      If you're looking for someone to push numbers at all costs,
-      I'm not the right fit.
-    </p>
-
-    <p>
-      If you're looking for someone who helps you grow
-      without loosing oversight, context, and trust,
-      we should talk.
-    </p>
-
-    <h2>Contact me</h2>
-
-    <p>
-      <a href="mailto:fahima.makanga@web.de">fahima.makanga@web.de</a>
-    </p>
+    <section class="block b5" id="contact">
+      <h2>Contact me</h2>
+      <p><a class="mail" href="mailto:fahima.makanga@web.de">fahima.makanga@web.de</a></p>
+    </section>
 
     <footer>
-      © <span id="y"></span> Fahima Makanga
+      <span>© <span id="y"></span> Fahima Makanga</span>
+      <a href="#top">Back to top</a>
     </footer>
-
   </main>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const overlay = document.getElementById("menuOverlay");
+    const openBtn = document.getElementById("openMenu");
+    const closeBtn = document.getElementById("closeMenu");
+
+    function openMenu(){
+      overlay.setAttribute("aria-hidden","false");
+      closeBtn.focus();
+    }
+    function closeMenu(){
+      overlay.setAttribute("aria-hidden","true");
+      openBtn.focus();
+    }
+
+    openBtn.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+
+    overlay.addEventListener("click", (e) => {
+      const link = e.target.closest("a");
+      if (link) closeMenu();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && overlay.getAttribute("aria-hidden") === "false") closeMenu();
+    });
   </script>
 </body>
 </html>
