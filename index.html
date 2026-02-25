@@ -1,385 +1,337 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Fahima Makanga – Growth Directress. Growth, when clarity matters." />
-  <title>Fahima Makanga – Growth Directress</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Fahima Makanga – Growth, when clarity matters</title>
+  <meta name="description" content="Growth management at the intersection of technology, communication, and responsibility. Focused on clarity, trust, and steerability at scale." />
+
+  <!-- Open Sans (body). Times is assumed as a system serif -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: "#dddbd9",
+            accent: "#9C7978",
+            ink: "#141414",
+          },
+          fontFamily: {
+            body: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+            serif: ["Times New Roman", "Times", "ui-serif", "Georgia", "serif"],
+          },
+          boxShadow: {
+            soft: "0 10px 30px rgba(0,0,0,0.06)",
+          }
+        }
+      }
+    }
+  </script>
 
   <style>
-    :root{
-      /* matte, eye-friendly, no gradients */
-      --bg:#0f1114;
-      --text:#f2f2f2;
-      --muted:#b8bec8;
-      --line:#2a2f38;
-
-      /* section highlights (subtle matte blocks) */
-      --s1:#12151b;
-      --s2:#121a17;
-      --s3:#14141c;
-      --s4:#161a14;
-      --s5:#121318;
-
-      --accent:#c7cdd6; /* subtle accent for focus/hover */
-      --max: 880px;
-      --radius: 18px;
-      --focus: 0 0 0 3px rgba(199,205,214,.22);
+    html { scroll-behavior: smooth; }
+    /* Subtle cursor for hero headline */
+    .cursor::after {
+      content: "";
+      display: inline-block;
+      width: 0.55ch;
+      height: 0.9em;
+      margin-left: 0.15ch;
+      background: #9C7978;
+      vertical-align: -0.1em;
+      animation: blink 1.1s infinite;
+      opacity: 0.85;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 0.0; }
+      51%, 100% { opacity: 0.85; }
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    a{color:inherit; text-decoration:none}
-    a:focus, button:focus{outline:none; box-shadow:var(--focus); border-radius:12px}
-
-    /* skip link like the reference site */
-    .skip{
-      position:absolute; left:-999px; top:12px;
-      padding:10px 12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      z-index:9999;
-    }
-    .skip:focus{left:12px}
-
-    .container{
-      width:min(var(--max), calc(100% - 40px));
-      margin:0 auto;
-    }
-
-    /* Header + nav pattern (visible links + mobile menu toggle text) */
-    header{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(15,17,20,.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding: 16px 0;
-    }
-    .brand{
-      font-size: 14px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    nav.primary{
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-    nav.primary a{
-      font-size:14px;
-      color: var(--muted);
-      padding: 8px 10px;
-      border-radius: 12px;
-    }
-    nav.primary a:hover{
-      color: var(--text);
-      background: rgba(255,255,255,.04);
-    }
-
-    /* Mobile menu toggle with text similar to "Menü öffnen / Menü schließen" behavior */
-    .menuToggle{
-      display:none;
-      align-items:center;
-      gap:10px;
-      border:1px solid var(--line);
-      background: transparent;
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 999px;
-      cursor:pointer;
-      font-weight:500;
-      white-space:nowrap;
-    }
-    .menuToggle:hover{background: rgba(255,255,255,.04)}
-    .menuToggle .labelOpen{display:inline}
-    .menuToggle .labelClose{display:none}
-    .menuToggle[data-open="true"] .labelOpen{display:none}
-    .menuToggle[data-open="true"] .labelClose{display:inline}
-
-    /* Overlay menu */
-    .overlay{
+    /* Subtle grain (tech-luxury feel) */
+    .grain::before {
+      content: "";
       position: fixed;
       inset: 0;
-      z-index: 100;
-      display: none;
-      background: rgba(15,17,20,.94);
-      backdrop-filter: blur(10px);
-    }
-    .overlay[aria-hidden="false"]{display:block}
-    .overlayInner{
-      width:min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-      padding: 22px 0;
-    }
-    .overlayTop{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--line);
-    }
-    .closeBtn{
-      border:1px solid var(--line);
-      background: transparent;
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 999px;
-      cursor:pointer;
-      font-weight:500;
-    }
-    .closeBtn:hover{background: rgba(255,255,255,.04)}
-    .menuList{
-      list-style:none;
-      padding: 18px 0 0;
-      margin: 0;
-      display:grid;
-      gap: 10px;
-    }
-    .menuList a{
-      display:block;
-      padding: 14px 12px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.02);
-      font-size: 16px;
-      color: var(--text);
-    }
-    .menuList a:hover{background: rgba(255,255,255,.05)}
-
-    /* Main */
-    main{padding: 34px 0 120px}
-    .hero{
-      padding: 56px 0 24px;
-    }
-    .kicker{
-      font-size: 13px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 0 0 18px;
-    }
-    h1{
-      font-size: clamp(34px, 4.2vw, 58px);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      font-weight: 500;
-      margin: 0 0 18px;
-    }
-    h2{
-      font-size: 22px;
-      letter-spacing: -0.01em;
-      font-weight: 500;
-      margin: 0 0 14px;
-    }
-    p{
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 17px;
-    }
-    .lead{
-      color: var(--text);
-      opacity: .92;
-      margin-bottom: 26px;
-    }
-
-    /* Section highlight blocks */
-    section.block{
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 34px 22px;
-      margin: 26px 0;
-    }
-    .b1{background: var(--s1)}
-    .b2{background: var(--s2)}
-    .b3{background: var(--s3)}
-    .b4{background: var(--s4)}
-    .b5{background: var(--s5)}
-
-    ul{
-      margin: 14px 0 18px;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-    li{margin: 10px 0}
-
-    .mail{
-      color: var(--text);
-      border-bottom: 1px solid var(--line);
-      text-underline-offset: 4px;
-    }
-    .mail:hover{border-bottom-color: var(--accent)}
-
-    footer{
-      margin-top: 96px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      display:flex;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    /* Responsive */
-    @media (max-width: 860px){
-      nav.primary{display:none}
-      .menuToggle{display:inline-flex}
-      .hero{padding-top: 42px}
-    }
-    @media (max-width: 520px){
-      section.block{padding: 28px 16px}
+      pointer-events: none;
+      opacity: 0.06;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
     }
   </style>
 </head>
 
-<body>
-  <a class="skip" href="#content">Skip to content</a>
+<body class="grain bg-base text-ink">
+  <!-- Top accent hairline -->
+  <div class="h-[2px] bg-accent/70"></div>
 
-  <header>
-    <div class="container topbar">
-      <a class="brand" href="#top">Fahima Makanga</a>
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-base/80 border-b border-ink/10">
+    <div class="mx-auto max-w-5xl px-5 py-4 flex items-center justify-between">
+      <a href="#top" class="font-serif tracking-tight text-[15px]">
+        Fahima Makanga
+      </a>
 
-      <nav class="primary" aria-label="Primary navigation">
-        <a href="#work">What I actually do</a>
-        <a href="#why">Why it matters</a>
-        <a href="#leaders">How I work with leaders</a>
-        <a href="#contact">Contact me</a>
+      <nav class="hidden sm:flex items-center gap-6 text-[13px] tracking-wide">
+        <a class="hover:text-accent transition" href="#what">What I do</a>
+        <a class="hover:text-accent transition" href="#how">How I work</a>
+        <a class="hover:text-accent transition" href="#proof">Proof</a>
+        <a class="hover:text-accent transition" href="#contact">Contact</a>
       </nav>
 
-      <button class="menuToggle" id="openMenu" type="button" aria-haspopup="dialog" aria-controls="menuOverlay" data-open="false">
-        <span class="labelOpen">Menü öffnen</span>
-        <span class="labelClose">Menü schließen</span>
-      </button>
+      <a href="#contact"
+         class="inline-flex items-center gap-2 rounded-full border border-ink/20 px-4 py-2 text-[13px] tracking-wide hover:border-accent hover:text-accent transition">
+        Let’s talk
+        <span aria-hidden="true" class="text-accent">→</span>
+      </a>
     </div>
   </header>
 
-  <div class="overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="overlayInner">
-      <div class="overlayTop">
-        <div class="brand">Menu</div>
-        <button class="closeBtn" id="closeMenu" type="button">Close</button>
+  <!-- HERO -->
+  <main id="top">
+    <section class="mx-auto max-w-5xl px-5 pt-16 sm:pt-20 pb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-8">
+          <p class="text-[12px] tracking-[0.22em] uppercase text-ink/70">
+            Growth • Clarity • Responsibility
+          </p>
+
+          <h1 class="mt-5 font-serif font-light tracking-tight text-[44px] sm:text-[56px] leading-[1.04]">
+            <span id="heroHeadline" class="cursor"></span>
+          </h1>
+
+          <p class="mt-6 max-w-xl font-body text-[16px] leading-[1.7] text-ink/85">
+            I help leadership teams grow in complex environments without losing steerability, context, and trust.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#contact"
+               class="rounded-full bg-ink text-base px-5 py-3 text-[13px] tracking-wide hover:bg-ink/90 transition shadow-soft">
+              Let’s talk
+            </a>
+            <a href="#how"
+               class="rounded-full border border-ink/20 px-5 py-3 text-[13px] tracking-wide hover:border-accent hover:text-accent transition">
+              How I work
+            </a>
+          </div>
+
+          <div class="mt-10 flex items-center gap-3 text-[12px] text-ink/70">
+            <span class="inline-block h-[1px] w-10 bg-ink/25"></span>
+            <span>Berlin • Available for leadership teams under pressure</span>
+          </div>
+        </div>
+
+        <aside class="lg:col-span-4 reveal">
+          <div class="rounded-2xl border border-ink/15 bg-base/60 p-6 shadow-soft">
+            <p class="font-serif text-[18px] leading-[1.3]">
+              “Clarity doesn’t slow growth. It prevents regret.”
+            </p>
+            <div class="mt-4 text-[12px] text-ink/70">
+              A working principle — not a slogan.
+            </div>
+            <div class="mt-6 border-t border-ink/10 pt-5 text-[13px] leading-[1.6] text-ink/85">
+              I operate where technology, communication, and public exposure meet.
+              My job is to keep growth steerable as complexity increases.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="mx-auto max-w-5xl px-5">
+      <div class="h-[1px] bg-ink/10"></div>
+    </div>
+
+    <!-- WHAT I DO -->
+    <section id="what" class="mx-auto max-w-5xl px-5 py-14 sm:py-16">
+      <div class="reveal">
+        <h2 class="font-serif font-light tracking-tight text-[28px] sm:text-[34px]">
+          What I do
+        </h2>
+        <p class="mt-3 max-w-2xl font-body text-[15px] leading-[1.75] text-ink/85">
+          I work with organizations that grow under real constraints: complexity, scrutiny, risk, and speed.
+          My focus is to keep teams aligned and decisions workable as scale amplifies everything.
+        </p>
       </div>
 
-      <ul class="menuList">
-        <li><a href="#top">Top</a></li>
-        <li><a href="#work">What I actually do</a></li>
-        <li><a href="#why">Why it matters</a></li>
-        <li><a href="#leaders">How I work with leaders</a></li>
-        <li><a href="#contact">Contact me</a></li>
-      </ul>
-    </div>
-  </div>
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div class="reveal rounded-2xl border border-ink/15 bg-base/60 p-6">
+          <div class="text-[12px] tracking-[0.18em] uppercase text-ink/60">Focus</div>
+          <p class="mt-3 font-body text-[15px] leading-[1.7]">
+            Steerable growth: clarity across product, leadership, and external interfaces.
+          </p>
+        </div>
 
-  <main class="container" id="content">
-    <div class="hero" id="top">
-      <div class="kicker">GROWTH DIRECTRESS</div>
-      <h1>Growth, when clarity matters</h1>
-      <p class="lead">I work with companies that grow under pressure.</p>
+        <div class="reveal rounded-2xl border border-ink/15 bg-base/60 p-6">
+          <div class="text-[12px] tracking-[0.18em] uppercase text-ink/60">Method</div>
+          <p class="mt-3 font-body text-[15px] leading-[1.7]">
+            Translation without dilution. Decisions that can survive pressure.
+          </p>
+        </div>
 
-      <p>
-        My background sits at the intersection of technology, communication and public exposure. I've worked in highly regulated environments, international tech companies, media organizations, and crisis-adjacent contexts. What connects all of it is this: growth fails when understanding breaks down. My role as a Growth Directress is to prevent that. I focus on keeping organizations steerable as complexity increases. That means translating between (technical) teams, leadership and external Stakeholders, aligning decisions before misalignment becomes structural, and making sure growth doesn't outpace responsibility. I don't approach growth as a visibility problem. I approach it as a coordination problem.
-      </p>
-    </div>
+        <div class="reveal rounded-2xl border border-ink/15 bg-base/60 p-6">
+          <div class="text-[12px] tracking-[0.18em] uppercase text-ink/60">Outcome</div>
+          <p class="mt-3 font-body text-[15px] leading-[1.7]">
+            Trust you can operate on, not just talk about.
+          </p>
+        </div>
 
-    <section class="block b2" id="work">
-      <h2>What I actually do</h2>
-
-      <p>I help leadership teams stay in control while scaling. That includes:</p>
-
-      <ul>
-        <li>structuring communication across product, leadership, and public interfaces</li>
-        <li>anticipating where misunderstanding turn into risk</li>
-        <li>building narratives that hold internally and externally</li>
-        <li>supporting decisions in moments where speed and responsibility collide</li>
-      </ul>
-
-      <p>I'm used to operating where stakes are real: public scrunity, regulatory attention, technological complexity, and reputational risk. I don't optimize for attention. I optimize for coherence.</p>
+        <div class="reveal rounded-2xl border border-ink/15 bg-base/60 p-6">
+          <div class="text-[12px] tracking-[0.18em] uppercase text-ink/60">Boundary</div>
+          <p class="mt-3 font-body text-[15px] leading-[1.7]">
+            If you want growth at all costs, I’m not the right fit.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section class="block b3" id="why">
-      <h2>Why it matters</h2>
-      <p>Scale amplifies everything If assumptions are unclear, they spread. If communication is fragmented, control erodes. If responsibility isn't explicit, trust breaks first. Companies don't lose momentum because they lack ambition. They lose it because clarity dissapears faster than they notice. My work is about slowing that erosion down before it becomes visible.</p>
+    <!-- HOW I WORK -->
+    <section id="how" class="mx-auto max-w-5xl px-5 pb-14 sm:pb-16">
+      <div class="reveal">
+        <h2 class="font-serif font-light tracking-tight text-[28px] sm:text-[34px]">
+          How I work
+        </h2>
+        <p class="mt-3 max-w-2xl font-body text-[15px] leading-[1.75] text-ink/85">
+          As organizations scale, their internal language splits: technical, strategic, operational, public.
+          Each part makes sense on its own. Together, control starts to slip. I restore coherence.
+        </p>
+      </div>
+
+      <div class="mt-10 reveal rounded-2xl border border-ink/15 bg-base/60 p-7 shadow-soft">
+        <ol class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <li>
+            <div class="text-accent font-serif text-[20px]">01</div>
+            <p class="mt-2 font-body text-[14px] leading-[1.7]">
+              Map the system: where decisions happen, where they break, who owns what.
+            </p>
+          </li>
+          <li>
+            <div class="text-accent font-serif text-[20px]">02</div>
+            <p class="mt-2 font-body text-[14px] leading-[1.7]">
+              Build clarity: shared language, crisp priorities, fewer misreads.
+            </p>
+          </li>
+          <li>
+            <div class="text-accent font-serif text-[20px]">03</div>
+            <p class="mt-2 font-body text-[14px] leading-[1.7]">
+              Maintain steerability: growth that stays deliberate under pressure.
+            </p>
+          </li>
+        </ol>
+      </div>
     </section>
 
-    <section class="block b4" id="leaders">
-      <h2>How I work with leaders</h2>
-      <p>I work best with leaders who: carry responsibility for complex systems understand that growth is not neutral value clear judgement over constant acceleration If you're looking for someone to push numbers at all costs, I'm not the right fit. If you're looking for someone who helps you grow without loosing oversight, context, and trust, we should talk.</p>
+    <!-- PROOF -->
+    <section id="proof" class="mx-auto max-w-5xl px-5 pb-14 sm:pb-16">
+      <div class="reveal">
+        <h2 class="font-serif font-light tracking-tight text-[28px] sm:text-[34px]">
+          Proof of work
+        </h2>
+        <p class="mt-3 max-w-2xl font-body text-[15px] leading-[1.75] text-ink/85">
+          I’ve operated in environments where public scrutiny and technical complexity meet.
+          The goal is always the same: make meaning stable enough for decisions to hold.
+        </p>
+      </div>
+
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="reveal rounded-2xl border border-ink/15 bg-base/60 p-6">
+          <p class="font-serif text-[16px] leading-[1.4]">International media placement</p>
+          <p class="mt-3 font-body text-[14px] leading-[1.7] text-ink/85">
+            Structured messaging and press assets that travel across markets.
+          </p>
+        </div>
+        <div class="reveal rounded-2xl border border-ink/15 bg-base/60 p-6">
+          <p class="font-serif text-[16px] leading-[1.4]">Technical translation</p>
+          <p class="mt-3 font-body text-[14px] leading-[1.7] text-ink/85">
+            Making complex product realities understandable without oversimplifying.
+          </p>
+        </div>
+        <div class="reveal rounded-2xl border border-ink/15 bg-base/60 p-6">
+          <p class="font-serif text-[16px] leading-[1.4]">Crisis-adjacent work</p>
+          <p class="mt-3 font-body text-[14px] leading-[1.7] text-ink/85">
+            Calm execution where stakes are real and attention is unforgiving.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section class="block b5" id="contact">
-      <h2>Contact me</h2>
-      <p><a class="mail" href="mailto:fahima.makanga@web.de">fahima.makanga@web.de</a></p>
+    <!-- CONTACT -->
+    <section id="contact" class="mx-auto max-w-5xl px-5 pb-16">
+      <div class="reveal rounded-2xl border border-ink/15 bg-base/60 p-8 shadow-soft">
+        <h2 class="font-serif font-light tracking-tight text-[28px] sm:text-[34px]">
+          Contact
+        </h2>
+        <p class="mt-3 max-w-2xl font-body text-[15px] leading-[1.75] text-ink/85">
+          If you’re responsible for growth in a complex environment and want to keep it steerable, I’m open to a conversation.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <!-- Replace with your email -->
+          <a href="mailto:fahima.makanga@web.de?subject=Conversation%20request"
+             class="rounded-full bg-ink text-base px-5 py-3 text-[13px] tracking-wide hover:bg-ink/90 transition">
+            Email me
+          </a>
+          <!-- Optional: replace with Calendly/booking link -->
+          <a href="#top"
+             class="rounded-full border border-ink/20 px-5 py-3 text-[13px] tracking-wide hover:border-accent hover:text-accent transition">
+            Back to top
+          </a>
+        </div>
+      </div>
     </section>
 
-    <footer>
-      <span>© <span id="y"></span> Fahima Makanga</span>
-      <a href="#top">Back to top</a>
+    <!-- FOOTER -->
+    <footer class="border-t border-ink/10">
+      <div class="mx-auto max-w-5xl px-5 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <p class="text-[12px] text-ink/70 font-body">© Fahima Makanga. Built for clarity.</p>
+        <p class="text-[12px] text-ink/60 font-body">
+          <span class="text-accent">●</span> Minimal • Tech-luxury • Steerable
+        </p>
+      </div>
     </footer>
   </main>
 
   <script>
-    // year
-    document.getElementById("y").textContent = new Date().getFullYear();
+    // Hero "typing" animation (subtle, not gimmicky)
+    const headlineText = "Growth, when clarity matters.";
+    const el = document.getElementById("heroHeadline");
+    let i = 0;
 
-    // menu open/close
-    const overlay = document.getElementById("menuOverlay");
-    const openBtn = document.getElementById("openMenu");
-    const closeBtn = document.getElementById("closeMenu");
-
-    function openMenu(){
-      overlay.setAttribute("aria-hidden","false");
-      openBtn.setAttribute("data-open","true");
-      closeBtn.focus();
+    function type() {
+      if (!el) return;
+      el.textContent = headlineText.slice(0, i);
+      i++;
+      if (i <= headlineText.length) requestAnimationFrame(type);
     }
-    function closeMenu(){
-      overlay.setAttribute("aria-hidden","true");
-      openBtn.setAttribute("data-open","false");
-      openBtn.focus();
-    }
+    // Start after a short delay to feel intentional
+    setTimeout(type, 180);
 
-    openBtn.addEventListener("click", () => {
-      const isOpen = overlay.getAttribute("aria-hidden") === "false";
-      if (isOpen) closeMenu();
-      else openMenu();
-    });
+    // Reveal on scroll
+    const items = document.querySelectorAll(".reveal");
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add("is-visible");
+      });
+    }, { threshold: 0.12 });
 
-    closeBtn.addEventListener("click", closeMenu);
-
-    // close when clicking a link inside overlay
-    overlay.addEventListener("click", (e) => {
-      const link = e.target.closest("a");
-      if (link) closeMenu();
-    });
-
-    // close on Escape
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && overlay.getAttribute("aria-hidden") === "false") closeMenu();
-    });
+    items.forEach(it => obs.observe(it));
   </script>
 </body>
 </html>
