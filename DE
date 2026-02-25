@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Fahima Makanga – Growth Directress. Wachstum, wenn Klarheit zählt." />
+  <title>Fahima Makanga – Growth Directress</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f17; --bg2:#0f1726;
+      --card:rgba(255,255,255,.04);
+      --line:rgba(255,255,255,.10);
+      --text:#eaf0ff; --muted:#cfd6f6; --muted2:#a7b3d6;
+      --accent:#7c5cff; --accent2:#2ee9a6;
+      --pink:#ff4fd8;
+      --max:1040px; --r:22px;
+      --shadow:0 18px 60px rgba(0,0,0,.35);
+      --focus:0 0 0 3px rgba(46,233,166,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      line-height:1.6;
+      background:
+        radial-gradient(1100px 520px at 18% 10%, rgba(124,92,255,.20), transparent 60%),
+        radial-gradient(900px 520px at 85% 18%, rgba(46,233,166,.16), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    }
+    a{color:inherit}
+    a:focus, button:focus{outline:none; box-shadow:var(--focus); border-radius:12px}
+    .container{width:min(var(--max), calc(100% - 40px)); margin:0 auto}
+    .muted{color:var(--muted)} .muted2{color:var(--muted2)}
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:12px; text-transform:uppercase; letter-spacing:.18em;
+      color:var(--muted2); margin:0 0 14px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 5px rgba(124,92,255,.14);
+    }
+
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg2) 60%, transparent);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:600; letter-spacing:.2px;
+      text-decoration:none;
+    }
+    .navRight{display:flex; align-items:center; gap:10px}
+    nav{display:flex; align-items:center; gap:8px}
+    nav a{
+      font-size:14px; padding:8px 10px; border-radius:12px;
+      color:var(--muted2); text-decoration:none;
+    }
+    nav a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+    .navCta{
+      color:var(--text);
+      border:1px solid rgba(46,233,166,.35);
+      background: linear-gradient(135deg, rgba(46,233,166,.18), rgba(124,92,255,.12));
+    }
+    .lang{
+      display:inline-flex; align-items:center; justify-content:center;
+      height:30px; padding:0 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,79,216,.35);
+      background: rgba(255,79,216,.12);
+      color: var(--pink);
+      font-weight:700;
+      letter-spacing:.08em;
+      font-size:12px;
+      text-decoration:none;
+    }
+    .lang:hover{background: rgba(255,79,216,.18)}
+
+    main{padding: 56px 0 28px}
+    .hero{padding: 22px 0 18px}
+    .heroGrid{display:grid; grid-template-columns: 1.15fr .85fr; gap:14px; align-items:start}
+    h1{
+      margin:0 0 12px;
+      font-size: clamp(34px, 4.6vw, 58px);
+      line-height:1.02; letter-spacing:-.02em;
+    }
+    .grad{
+      background: linear-gradient(135deg, var(--accent), var(--accent2), #58a6ff);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .lead{
+      margin:0 0 18px;
+      max-width: 70ch;
+      font-size: 16px;
+      color: color-mix(in srgb, var(--text) 85%, var(--muted2));
+    }
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px; border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--text); text-decoration:none; font-weight:600;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.07)}
+    .btnPrimary{
+      border-color: rgba(46,233,166,.35);
+      background: linear-gradient(135deg, rgba(46,233,166,.22), rgba(124,92,255,.12));
+    }
+
+    section{padding: 44px 0}
+    .sectionHead{margin-bottom: 14px}
+    h2{margin:0 0 8px; font-size: 22px; letter-spacing:-.02em}
+    h3{margin:0 0 6px; font-size:16px}
+
+    .alt{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      background: var(--card);
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+      padding:16px;
+    }
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    .cards{display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; margin-top: 14px}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .list li{margin:8px 0}
+
+    footer{padding: 26px 0 40px; color: var(--muted2); font-size: 13px; text-align:center}
+
+    @media (max-width: 900px){
+      .heroGrid{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      nav a{display:none}
+      nav a.navCta{display:inline-flex}
+      main{padding: 36px 0 20px}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span> Fahima Makanga</a>
+
+      <div class="navRight">
+        <nav aria-label="Primary navigation">
+          <a href="#about">Über mich</a>
+          <a href="#work">Arbeit</a>
+          <a href="#why">Warum</a>
+          <a href="#leaders">Leaders</a>
+          <a href="#contact" class="navCta">Kontakt</a>
+        </nav>
+
+        <!-- Language switch -->
+        <a class="lang" href="/" aria-label="Back to English">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="top">
+    <section class="hero">
+      <div class="heroGrid">
+        <div>
+          <p class="kicker"><span class="dot" aria-hidden="true"></span> Growth Directress · Klarheit unter Druck</p>
+          <h1>Wachstum, wenn <span class="grad">Klarheit</span> zählt.</h1>
+
+          <p class="lead">
+            Ich arbeite mit Unternehmen, die unter Druck wachsen. Meine Rolle ist es, Organisationen steuerbar zu halten,
+            wenn Komplexität steigt — indem ich Führung, (technische) Teams und externe Stakeholder ausrichte,
+            bevor Fehlalignment strukturell wird.
+          </p>
+
+          <div class="actions">
+            <a class="btn btnPrimary" href="#contact">Kontakt</a>
+            <a class="btn" href="#work">Was ich tue</a>
+          </div>
+        </div>
+
+        <aside class="card" aria-label="Profilkarte">
+          <h3 style="margin:0">Fokus</h3>
+          <p class="muted2" style="margin:6px 0 0">Kohärenz statt Aufmerksamkeit. Koordination statt Chaos.</p>
+
+          <div class="grid2" style="margin-top:12px">
+            <div class="card" style="padding:12px; box-shadow:none; background:rgba(255,255,255,.03)">
+              <h3 style="margin:0 0 4px">Kontext</h3>
+              <p class="muted2" style="margin:0; font-size:13px">Öffentliche Aufmerksamkeit · Komplexität · Reputationsrisiko</p>
+            </div>
+            <div class="card" style="padding:12px; box-shadow:none; background:rgba(255,255,255,.03)">
+              <h3 style="margin:0 0 4px">Aufbau</h3>
+              <p class="muted2" style="margin:0; font-size:13px">Struktur · Alignment · Narrative</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="sectionHead">
+        <h2>Über mich</h2>
+        <p class="muted">
+          Mein Background liegt an der Schnittstelle von Technologie, Kommunikation und öffentlicher Wahrnehmung.
+          Ich habe in internationalen Tech-Unternehmen, Medienkontexten und krisennahen Umfeldern gearbeitet.
+          Wachstum scheitert oft, wenn Verständnis bricht — genau das verhindere ich.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Wie ich Wachstum denke</h3>
+          <p class="muted2" style="margin:0">Nicht als Sichtbarkeitsproblem. Als Koordinationsproblem.</p>
+        </div>
+        <div class="card">
+          <h3>Worauf ich optimiere</h3>
+          <p class="muted2" style="margin:0">Kohärenz: Entscheidungen, Narrativ und Verantwortung bewegen sich gemeinsam.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="alt">
+      <div class="sectionHead">
+        <h2>Was ich konkret tue</h2>
+        <p class="muted">Ich helfe Führungsteams, beim Skalieren die Kontrolle zu behalten.</p>
+      </div>
+
+      <div class="cards" role="list">
+        <div class="card" role="listitem">
+          <h3>Kommunikationsarchitektur</h3>
+          <p class="muted2">Kommunikation über Produkt, Führung und öffentliche Schnittstellen strukturieren.</p>
+        </div>
+        <div class="card" role="listitem">
+          <h3>Risiko durch Missverständnisse</h3>
+          <p class="muted2">Antizipieren, wo Unklarheit zu operativen oder reputativen Risiken wird.</p>
+        </div>
+        <div class="card" role="listitem">
+          <h3>Narrative, die tragen</h3>
+          <p class="muted2">Narrative bauen, die intern und extern konsistent bleiben.</p>
+        </div>
+        <div class="card" role="listitem">
+          <h3>Entscheidungsunterstützung</h3>
+          <p class="muted2">Entscheidungen begleiten, wenn Geschwindigkeit und Verantwortung kollidieren.</p>
+        </div>
+      </div>
+
+      <ul class="list">
+        <li>Ich optimiere nicht auf Aufmerksamkeit. Ich optimiere auf Kohärenz.</li>
+      </ul>
+    </section>
+
+    <section id="why">
+      <div class="sectionHead">
+        <h2>Warum das zählt</h2>
+        <p class="muted">
+          Skalierung verstärkt alles. Wenn Annahmen unklar sind, verbreiten sie sich. Wenn Kommunikation fragmentiert ist, erodiert Kontrolle.
+          Wenn Verantwortung nicht explizit ist, bricht Vertrauen zuerst.
+        </p>
+      </div>
+
+      <div class="card">
+        <p class="muted2" style="margin:0">
+          Unternehmen verlieren Momentum selten wegen fehlender Ambition.
+          Sie verlieren es, weil Klarheit schneller verschwindet, als sie es merken.
+          Meine Arbeit verlangsamt diese Erosion, bevor sie sichtbar wird.
+        </p>
+      </div>
+    </section>
+
+    <section id="leaders" class="alt">
+      <div class="sectionHead">
+        <h2>Wie ich mit Führung arbeite</h2>
+        <p class="muted">
+          Am besten passe ich zu Führung, die komplexe Systeme verantwortet, versteht, dass Wachstum nicht neutral ist,
+          und klares Urteil höher bewertet als ständige Beschleunigung.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Kein Fit</h3>
+          <p class="muted2" style="margin:0">Wenn es darum geht, Zahlen um jeden Preis zu pushen.</p>
+        </div>
+        <div class="card">
+          <h3>Sehr guter Fit</h3>
+          <p class="muted2" style="margin:0">Wenn Wachstum nicht den Kontext, die Übersicht und das Vertrauen kosten soll.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="sectionHead">
+        <h2>Kontakt</h2>
+        <p class="muted">E-Mail ist der schnellste Weg.</p>
+      </div>
+
+      <div class="card">
+        <div class="muted2" style="font-size:13px; text-transform:uppercase; letter-spacing:.18em;">E-Mail</div>
+        <p style="margin:8px 0 0">
+          <a href="mailto:fahima.makanga@web.de" style="text-decoration:underline; text-underline-offset:4px;">fahima.makanga@web.de</a>
+        </p>
+
+        <p class="muted2" style="margin:14px 0 0">
+          Copy-Paste Kurzintro:
+          <span style="color:var(--text); font-weight:600;">„Growth Directress mit Fokus auf Klarheit, Koordination und Vertrauen unter Druck.“</span>
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Fahima Makanga · <a href="#top" class="muted2">nach oben</a>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
