@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>From Product to Reference – Fahima Makanga</title>
+  <meta name="description" content="A short illustration of how I think about growth: from product to reference. Legible enough to understand, not enough to copy." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: "#dddbd9",
+            accent: "#9C7978",
+            ink: "#141414",
+          },
+          fontFamily: {
+            body: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+            serif: ["Times New Roman", "Times", "ui-serif", "Georgia", "serif"],
+          },
+          boxShadow: {
+            soft: "0 10px 30px rgba(0,0,0,0.06)",
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+
+<body class="grain bg-base text-ink">
+  <div class="h-[2px] bg-accent/70"></div>
+
+  <header class="sticky top-0 z-50 backdrop-blur bg-base/80 border-b border-ink/10">
+    <div class="mx-auto max-w-3xl px-5 py-4 flex items-center justify-between">
+      <a href="/" class="font-serif tracking-tight text-[15px]">← Fahima Makanga</a>
+      <a href="mailto:fahima.makanga@web.de?subject=Conversation%20request"
+         class="inline-flex items-center gap-2 rounded-full border border-ink/20 px-4 py-2 text-[13px] tracking-wide hover:border-accent hover:text-accent transition">
+        Email
+        <span aria-hidden="true" class="text-accent">→</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-5 py-12 sm:py-14">
+    <p class="text-[12px] tracking-[0.22em] uppercase text-ink/70">
+      A short illustration
+    </p>
+
+    <h1 class="mt-4 font-serif font-light tracking-tight text-[36px] sm:text-[44px] leading-[1.08]">
+      From Product to Reference
+    </h1>
+
+    <p class="mt-5 font-body text-[16px] leading-[1.75] text-ink/85">
+      Most companies treat growth as a visibility problem. More reach. More messaging. More acceleration.
+      I’ve learned that the real challenge appears earlier, and quieter: becoming understood before becoming big.
+    </p>
+
+    <div class="mt-8 rounded-2xl border border-ink/15 bg-base/60 p-6 shadow-soft">
+      <p class="font-body text-[14px] leading-[1.8] text-ink/85">
+        This page outlines how I think about the shift from “one option among many” to “the default people name.”
+        It’s meant to be legible, not copyable. The actual work is always company-specific.
+      </p>
+    </div>
+
+    <section class="mt-10 space-y-10">
+      <div>
+        <h2 class="font-serif text-[20px] leading-[1.25]">1. Growth doesn’t fail because of competition</h2>
+        <p class="mt-3 font-body text-[15px] leading-[1.85] text-ink/85">
+          It fails because of confusion. When a company scales faster than it is understood, misunderstandings multiply:
+          internally, externally, structurally. Most growth efforts amplify that confusion instead of resolving it.
+          My work usually starts here — before growth becomes visible.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-[20px] leading-[1.25]">2. Reference brands don’t win attention — they win language</h2>
+        <p class="mt-3 font-body text-[15px] leading-[1.85] text-ink/85">
+          Some brands stop being a choice and become the placeholder people use for the category itself.
+          Once that happens, comparison changes: alternatives are no longer equal options — they are deviations.
+          This is not branding. It’s a shift in how decisions are made.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-[20px] leading-[1.25]">3. Categories are not given — they are framed</h2>
+        <p class="mt-3 font-body text-[15px] leading-[1.85] text-ink/85">
+          Especially in technology, categories are unstable. What something <em>is</em> matters more than what it <em>does</em>.
+          Whoever defines that meaning controls how the product is evaluated. Many companies explain features while the category stays unclear.
+          That gap is where growth becomes fragile.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-[20px] leading-[1.25]">4. In the AI age, the biggest risk is underestimation</h2>
+        <p class="mt-3 font-body text-[15px] leading-[1.85] text-ink/85">
+          The most serious failures are rarely spectacular. They are moments where systems keep operating, humans lose visibility,
+          and responsibility becomes diffuse. That is not a technical problem alone. It is a problem of understanding.
+          Growth without understanding scales risk quietly.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-[20px] leading-[1.25]">5. Becoming a reference requires restraint</h2>
+        <p class="mt-3 font-body text-[15px] leading-[1.85] text-ink/85">
+          The companies that become defaults don’t talk more. They talk less, but with precision.
+          They decide what not to explain. They don’t chase relevance; they create conditions where relevance follows.
+          This kind of growth cannot be rushed. And it cannot be templated.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-serif text-[20px] leading-[1.25]">6. How I work</h2>
+        <p class="mt-3 font-body text-[15px] leading-[1.85] text-ink/85">
+          I work with companies that want to define their category, grow without being misunderstood, and remain steerable as complexity increases.
+          I don’t apply pre-built models. Every roadmap depends on the company, the moment, and the risk it carries.
+          That work doesn’t belong on a public page.
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-12 rounded-2xl border border-ink/15 bg-base/60 p-7 shadow-soft">
+      <h3 class="font-serif text-[18px] leading-[1.25]">If this resonates</h3>
+      <p class="mt-3 font-body text-[15px] leading-[1.8] text-ink/85">
+        If you’re responsible for growth in a complex environment and want to keep it steerable, I’m open to a conversation.
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3 items-center">
+        <a href="mailto:fahima.makanga@web.de?subject=Conversation%20request"
+           class="rounded-full bg-ink text-base px-5 py-3 text-[13px] tracking-wide hover:bg-ink/90 transition">
+          Email me
+        </a>
+        <a href="/"
+           class="rounded-full border border-ink/20 px-5 py-3 text-[13px] tracking-wide hover:border-accent hover:text-accent transition">
+          Back to homepage
+        </a>
+        <button id="copyEmailBtn" type="button"
+           class="rounded-full border border-ink/20 px-5 py-3 text-[13px] tracking-wide hover:border-accent hover:text-accent transition">
+          Copy email
+        </button>
+        <span id="copyToast" class="hidden text-[12px] text-ink/70 font-body">Copied.</span>
+      </div>
+    </section>
+
+    <footer class="mt-12 pt-8 border-t border-ink/10">
+      <p class="text-[12px] text-ink/70 font-body">© Fahima Makanga. Built for clarity.</p>
+    </footer>
+  </main>
+
+  <script>
+    const email = "fahima.makanga@web.de";
+    const copyBtn = document.getElementById('copyEmailBtn');
+    const toast = document.getElementById('copyToast');
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(email);
+          if (toast) {
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 1400);
+          }
+        } catch (err) {
+          window.prompt("Copy this email:", email);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
